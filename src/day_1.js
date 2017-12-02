@@ -20,6 +20,5 @@ module.exports = { partA, partB };
 const loadFile = require("./utils/loadFile");
 
 const input = loadFile(`${__dirname}/resources/day_1.txt`);
-
 console.log(`Answer PartA: ${partA(input)}`);
 console.log(`Answer PartB: ${partB(input)}`);
