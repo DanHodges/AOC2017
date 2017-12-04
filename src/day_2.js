@@ -33,11 +33,11 @@ const checksumB = data =>
     .map(findProduct)
     .reduce(sum, 0);
 
-const loadFile = require("./utils/loadFile");
-
-const input = loadFile(`${__dirname}/resources/day_2.txt`);
-console.log(`Answer checksumA: ${checksumA(input)}`);
-console.log(`Answer checksumB: ${checksumB(input)}`);
+// const loadFile = require("./utils/loadFile");
+//
+// const input = loadFile(`${__dirname}/resources/day_2.txt`);
+// console.log(`Answer checksumA: ${checksumA(input)}`);
+// console.log(`Answer checksumB: ${checksumB(input)}`);
 
 module.exports = {
   checksumA,

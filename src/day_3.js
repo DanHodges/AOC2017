@@ -66,7 +66,7 @@ const partA = input => {
   return Math.abs(x) + Math.abs(y);
 };
 
-console.log(partA(12));
+// console.log(partA(12));
 
 module.exports = {
   makeGraph,
