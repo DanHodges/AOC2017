@@ -21,12 +21,12 @@ const moveDown = coord => ({
   index: coord.index + 1,
 });
 
-// const findAdj = data => { const { x: lastX, y: lastY } = data.last();
-//   return data
-//     .filter(({ x, y }) => Math.abs(lastX - x) < 2 && Math.abs(lastY - y) < 2)
-//     .map(item => item.adjSum)
-//     .reduce((a, b) => a + b, 0);
-// };
+const findAdjacentCoordinates = data => {
+  const { x: lastX, y: lastY } = data.last();
+  return data
+    .pop()
+    .filter(({ x, y }) => Math.abs(lastX - x) < 2 && Math.abs(lastY - y) < 2);
+};
 
 const addCoordinate = direction => (data, times, count = 0) =>
   times === count
@@ -66,7 +66,10 @@ const partA = input => {
   return Math.abs(x) + Math.abs(y);
 };
 
-const bar = input => makeGraph(input).toJS();
 console.log(partA(12));
 
-module.exports = { partA };
+module.exports = {
+  makeGraph,
+  partA,
+  findAdjacentCoordinates,
+};
