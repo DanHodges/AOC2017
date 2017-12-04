@@ -1,49 +1,38 @@
 const { List } = require("immutable");
 
-const moveRight = (coord, times, data) => ({
+const moveRight = coord => ({
   ...coord,
-  times,
   x: coord.x + 1,
   index: coord.index + 1,
 });
-const moveLeft = (coord, times, data) => ({
+const moveLeft = coord => ({
   ...coord,
-  times,
-  x: coord.x + 1,
-  index: coord.index + 1,
   x: coord.x - 1,
-  adjSum: findAdj(data),
-});
-const moveUp = (coord, times, data) => ({
-  ...coord,
-  times,
-  x: coord.x + 1,
   index: coord.index + 1,
+});
+const moveUp = coord => ({
+  ...coord,
   y: coord.y + 1,
-  adjSum: findAdj(data),
-});
-const moveDown = (coord, times, data) => ({
-  ...coord,
-  times,
-  x: coord.x + 1,
   index: coord.index + 1,
+});
+const moveDown = coord => ({
+  ...coord,
   y: coord.y - 1,
-  adjSum: findAdj(data),
+  index: coord.index + 1,
 });
 
-const findAdj = data => {
-  const { x: lastX, y: lastY } = data.last();
-  return data
-    .filter(({ x, y }) => Math.abs(lastX - x) < 2 && Math.abs(lastY - y) < 2)
-    .map(item => item.adjSum)
-    .reduce((a, b) => a + b, 0);
-};
+// const findAdj = data => { const { x: lastX, y: lastY } = data.last();
+//   return data
+//     .filter(({ x, y }) => Math.abs(lastX - x) < 2 && Math.abs(lastY - y) < 2)
+//     .map(item => item.adjSum)
+//     .reduce((a, b) => a + b, 0);
+// };
 
 const addCoordinate = direction => (data, times, count = 0) =>
   times === count
     ? data
     : addCoordinate(direction)(
-        data.push(direction(data.last(), times)),
+        data.push(direction(data.last())),
         times,
         count + 1,
       );
@@ -56,7 +45,7 @@ const addCoordinateDown = addCoordinate(moveDown);
 const makeGraph = (
   size,
   index = 1,
-  data = List([{ x: 0, y: 0, index: 1, adjSum: 1 }]),
+  data = List([{ x: 0, y: 0, index: 1 }]),
 ) => {
   if (data.size >= size) return data;
 
@@ -70,7 +59,7 @@ const move = (howManyTimes, data, rightAndUp) =>
     ? addCoordinateUp(addCoordinateRight(data, howManyTimes), howManyTimes)
     : addCoordinateDown(addCoordinateLeft(data, howManyTimes), howManyTimes);
 
-const foo = input => {
+const partA = input => {
   const { x, y } = makeGraph(input)
     .reverse()
     .find(({ index }) => index === input);
@@ -78,6 +67,6 @@ const foo = input => {
 };
 
 const bar = input => makeGraph(input).toJS();
-console.log(bar(12));
+console.log(partA(12));
 
-module.exports = {};
+module.exports = { partA };
