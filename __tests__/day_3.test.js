@@ -1,5 +1,5 @@
 const { List } = require("immutable");
-const { makeGraph, partA, findAdjacentCoordinates } = require("../day_3");
+const { makeGraph, partA, findAdjacentCoordinates } = require("../src/day_3");
 
 describe("calculate steps in spiral memory", () => {
   let graph;

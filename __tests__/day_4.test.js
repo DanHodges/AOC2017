@@ -6,7 +6,7 @@ const {
   rowIsValidPartB,
   sortWord,
   partA,
-} = require("../day_4");
+} = require("../src/day_4");
 
 describe("password validator", () => {
   test("should tell if a row is valid part A", () => {

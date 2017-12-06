@@ -1,4 +1,4 @@
-const { partA, partB } = require("../day_1");
+const { partA, partB } = require("../src/day_1");
 
 describe("partA", () => {
   test("should work with 1122", () => {

@@ -1,0 +1,3 @@
+{
+  "plugins": ["tailcall-optimization", "transform-object-rest-spread"]
+}

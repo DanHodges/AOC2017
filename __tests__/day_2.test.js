@@ -4,14 +4,14 @@ const {
   makeRows,
   rowDifference,
   findProduct,
-} = require("../day_2");
+} = require("../src/day_2");
 
 describe("calculate a checksum part A", () => {
   let data;
   let rowTwo;
   beforeEach(() => {
     data = "5\t1\t9\t5\n\t7\t5\t3\n2\t4\t6\t8";
-    rowTwo = makeRows(data)[1];
+    [, rowTwo] = makeRows(data);
   });
 
   test("should make rows of numbers", () => {

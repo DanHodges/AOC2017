@@ -13,10 +13,12 @@
     "test": "node_modules/.bin/jest",
     "lint": "node_modules/.bin/eslint .",
     "lintfix": "node_modules/.bin/eslint . --fix",
-    "prettier": "node_modules/.bin/prettier '*.{js,json}' --write",
-    "precommit": "lintfix"
+    "prettier": "node_modules/.bin/prettier 'src/*.{js,json}' --write",
+    "precommit": "lintfix",
+    "build": "babel src -d lib"
   },
   "devDependencies": {
+    "babel-plugin-transform-object-rest-spread": "^6.26.0",
     "eslint": "^4.12.1",
     "eslint-config-airbnb-base": "^12.1.0",
     "eslint-config-prettier": "^2.9.0",
@@ -27,6 +29,14 @@
     "prettier": "^1.8.2"
   },
   "dependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-plugin-tailcall-optimization": "^1.0.11",
+    "babel-preset-env": "^1.6.1",
     "immutable": "^3.8.2"
+  },
+  "babel": {
+    "plugins": [
+      "tailcall-optimization"
+    ]
   }
 }

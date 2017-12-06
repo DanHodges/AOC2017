@@ -42,6 +42,11 @@ const addCoordinateLeft = addCoordinate(moveLeft);
 const addCoordinateUp = addCoordinate(moveUp);
 const addCoordinateDown = addCoordinate(moveDown);
 
+const move = (howManyTimes, data, rightAndUp) =>
+  rightAndUp
+    ? addCoordinateUp(addCoordinateRight(data, howManyTimes), howManyTimes)
+    : addCoordinateDown(addCoordinateLeft(data, howManyTimes), howManyTimes);
+
 const makeGraph = (
   size,
   index = 1,
@@ -53,11 +58,6 @@ const makeGraph = (
 
   return makeGraph(size, index + 1, newList);
 };
-
-const move = (howManyTimes, data, rightAndUp) =>
-  rightAndUp
-    ? addCoordinateUp(addCoordinateRight(data, howManyTimes), howManyTimes)
-    : addCoordinateDown(addCoordinateLeft(data, howManyTimes), howManyTimes);
 
 const partA = input => {
   const { x, y } = makeGraph(input)
