@@ -18,7 +18,11 @@ const countJumpsA = (list, index, step) => {
   const value = list.get(index);
   if (value === undefined) return step;
 
-  return countJumpsA(list.set(index, increment(value)), index + value, step + 1);
+  return countJumpsA(
+    list.set(index, increment(value)),
+    index + value,
+    step + 1,
+  );
 };
 
 const makeList = data => List(data.split("\n").map(i => parseInt(i, 10)));
@@ -37,4 +41,3 @@ module.exports = {
   countJumpsB,
   makeList,
 };
-
