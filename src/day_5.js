@@ -30,6 +30,7 @@ const partA = data => countJumpsA(makeList(data), 0, 0);
 const partB = data => countJumpsB(makeList(data), 0, 0);
 
 const loadFile = require("./utils/loadFile");
+
 const input = loadFile(`${__dirname}/../resources/day_5.txt`);
 console.log(`Answer PartA: ${countJumps(makeList(input), 0, 0)}`);
 console.log(`Answer PartB: ${countJumpsPartB(makeList(input), 0, 0)}`);

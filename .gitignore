@@ -1,4 +1,5 @@
 node_modules
 yarn-error.log
+lib
 AOC.iml
 .idea
